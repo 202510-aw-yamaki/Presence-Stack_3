@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1-2. 音量の調整とデスクトップのレイアウト | Web面接ガイド</title>
+  <link rel="stylesheet" href="..\css\common.css">
+  <link rel="stylesheet" href="..\css\section_common.css">
+  <style>
+    .audio-camera-card {
+      display: grid;
+      gap: 14px;
+    }
+
+    .audio-camera-card .check-figure {
+      min-height: 0;
+      align-self: start;
+    }
+
+    .audio-camera-card .check-figure img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      background: linear-gradient(180deg, #f4f7f5, #e4ece8);
+    }
+
+    .audio-camera-card.is-portrait .check-figure img {
+      aspect-ratio: 1 / 1;
+    }
+
+    .audio-camera-card.is-landscape .check-figure img {
+      aspect-ratio: 16 / 9;
+    }
+  </style>
+  <style>
+    html.transition-resume body {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, rgba(9, 19, 34, 0.82), rgba(2, 6, 12, 0.98) 72%),
+        linear-gradient(180deg, rgba(4, 10, 18, 0.92), rgba(1, 4, 10, 0.98));
+    }
+
+    html.transition-resume .site-shell,
+    html.transition-resume .section-modal {
+      visibility: hidden;
+    }
+
+    html.transition-resume body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 119;
+      background:
+        radial-gradient(circle at center, rgba(9, 19, 34, 0.82), rgba(2, 6, 12, 0.98) 72%),
+        linear-gradient(180deg, rgba(4, 10, 18, 0.92), rgba(1, 4, 10, 0.98));
+    }
+
+    html.transition-resume body::after {
+      content: "SYSTEM TRANSFER   16%";
+      position: fixed;
+      left: 50%;
+      bottom: 11vh;
+      z-index: 120;
+      transform: translateX(-50%);
+      width: min(420px, calc(100vw - 32px));
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(6, 12, 22, 0.78);
+      border: 1px solid rgba(110, 255, 219, 0.18);
+      box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.34),
+        inset 0 0 18px rgba(255, 255, 255, 0.02);
+      color: #97ffe6;
+      font: 700 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: 0.16em;
+      text-align: left;
+      white-space: pre;
+    }
+  </style>
+  <script>
+    (function () {
+      var key = "presenceTransitionState";
+      var ttl = 15000;
+      try {
+        var raw = window.sessionStorage.getItem(key);
+        if (!raw) return;
+        var state = JSON.parse(raw);
+        var path = decodeURIComponent(window.location.pathname).replace(/\\/g, "/");
+        var marker = "/Presence-Stack_2/";
+        var markerIndex = path.lastIndexOf(marker);
+        var pageKey = markerIndex >= 0 ? path.slice(markerIndex + marker.length) : path.replace(/^\/+/, "");
+        var expired = Date.now() - Number(state.startedAt || 0) > ttl;
+        if (!expired && state.phase === "resume" && state.target === pageKey) {
+          document.documentElement.classList.add("transition-resume");
+          return;
+        }
+        window.sessionStorage.removeItem(key);
+      } catch (error) {
+        try {
+          window.sessionStorage.removeItem(key);
+        } catch (innerError) {}
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="site-shell">
+    <div class="slide-page">
+      <div data-shared-header></div>
+
+      <main class="slide-body" aria-label="1-2 音量の調整とデスクトップのレイアウト">
+        <section class="section-page" aria-labelledby="page-title">
+          <article class="card title-card">
+            <h1 id="page-title" class="page-title">1-2. 音量の調整とデスクトップのレイアウト</h1>
+             </article>
+
+          <article class="note" aria-label="注釈">
+            <div class="note-head">
+              <span class="note-badge">注釈</span>
+            </div>
+            <p class="text">音声と映像は、面接時の第一印象を大きく左右します。<br>あわせて、資料を見ながら自然に話せる画面配置も整えておくと安心です。</p>
+          </article>
+
+          <article class="check-card audio-camera-card is-portrait" aria-labelledby="audio-title" role="button" tabindex="0" data-modal-target="#audio-modal">
+            <div class="check-card-header">
+              <h2 id="audio-title" class="check-title">音量の調整</h2>
+            </div>
+            <div class="check-body">
+              <div class="check-text" data-modal-step="0">
+                <ul class="check-list">
+                  <li>音量ミキサーの開き方を確認しておきましょう</li>
+                  <li>必要に応じて音量設定を整えておきましょう</li>
+                  <li>自分の声量が小さすぎないかテストしておきましょう</li>
+                  <li>面接中はミュートにし、面接時のみ解除する習慣にすると安全です</li>
+                </ul>
+                <p class="text">事前に自分の声を録音して確認しておくと、声が小さい、こもって聞こえる、周囲の生活音が入りやすいといった問題に気づけます。面接本番では話し始めてから直す余裕が少ないため、開始前に一度テストしておくと安心です。</p>
+              </div>
+              <figure class="check-figure" aria-label="音量ミキサーのイメージ" data-modal-step="1">
+                <div class="media-frame">
+                  <img src="..\image\音量ミキサー.png" alt="音量ミキサー">
+                </div>
+              </figure>
+            </div>
+          </article>
+
+          <article class="check-card audio-camera-card is-landscape" aria-labelledby="desktop-layout-title" role="button" tabindex="0" data-modal-target="#desktop-layout-modal">
+            <div class="check-card-header">
+              <h2 id="desktop-layout-title" class="check-title">デスクトップレイアウト</h2>
+            </div>
+            <div class="check-body">
+              <div class="check-text" data-modal-step="0">
+                <ul class="check-list">
+                  <li>面談時にはモニターを使用しましょう。デュアルモニターを活用しましょう</li>
+                  <li>Web会議ツール用と資料確認用にモニターを分けると、資料の確認に集中できます</li>
+                  <li>ただし、視線移動が大きくなりすぎない配置にすることが大切です</li>
+                </ul>
+              </div>
+              <figure class="check-figure" aria-label="マルチディスプレイのイメージ" data-modal-step="1">
+                <div class="media-frame">
+                  <img src="..\image\マルチディスプレイ説明.png" alt="マルチディスプレイ説明">
+                </div>
+              </figure>
+            </div>
+          </article>
+
+          <article class="note" aria-label="注釈">
+            <div class="note-head">
+              <span class="note-badge">注釈</span>
+            </div>
+            <p class="text">ノートパソコン単独でWeb会議ツールを使う場合でも、<br>外部モニターを資料表示用にすると、資料に合ったレイアウトを設定しやすくなります。<br>注釈としてマウスカーソルが相手側に映らないように、<br>必要な設定も忘れないよう気をつけましょう。</p>
+          </article>
+        </section>
+      </main>
+
+      <div data-shared-footer></div>
+    </div>
+  </div>
+
+  <section class="section-modal" id="audio-modal" aria-hidden="true" aria-labelledby="audio-modal-title">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="audio-modal-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="audio-modal-title">音量の調整</h2>
+        <button class="modal-close" type="button" aria-label="閉じる" data-modal-close>閉じる</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-panel is-active">
+          <div class="modal-step">
+            <div class="modal-text-panel check-text">
+              <ul class="modal-list">
+                <li>音量ミキサーの開き方を確認しておきましょう</li>
+                <li>必要に応じて音量設定を整えておきましょう</li>
+                <li>自分の声量が小さすぎないかテストしておきましょう</li>
+                <li>面接中はミュートにし、面接時のみ解除する習慣にすると安全です</li>
+              </ul>
+              <p class="text">事前に自分の声を録音して確認しておくと、声が小さい、こもって聞こえる、周囲の生活音が入りやすいといった問題に気づけます。面接本番では話し始めてから直す余裕が少ないため、開始前に一度テストしておくと安心です。</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-panel">
+          <div class="modal-step">
+            <figure class="modal-figure modal-image-panel">
+              <div class="media-frame">
+                <img src="..\image\音量ミキサー.png" alt="音量ミキサー">
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-progress" data-modal-progress>1 / 2</div>
+        <div class="modal-controls">
+          <button class="modal-nav is-secondary" type="button" data-modal-prev>前へ</button>
+          <button class="modal-nav" type="button" data-modal-next>次へ</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-modal" id="desktop-layout-modal" aria-hidden="true" aria-labelledby="desktop-layout-modal-title">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="desktop-layout-modal-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="desktop-layout-modal-title">デスクトップレイアウト</h2>
+        <button class="modal-close" type="button" aria-label="閉じる" data-modal-close>閉じる</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-panel is-active">
+          <div class="modal-step">
+            <div class="modal-text-panel check-text">
+              <ul class="modal-list">
+                <li>面談時にはモニターを使用しましょう。デュアルモニターを活用しましょう</li>
+                <li>Web会議ツール用と資料確認用にモニターを分けると、資料の確認に集中できます</li>
+                <li>ただし、視線移動が大きくなりすぎない配置にすることが大切です</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-panel">
+          <div class="modal-step">
+            <figure class="modal-figure modal-image-panel">
+              <div class="media-frame">
+                <img src="..\image\マルチディスプレイ説明.png" alt="マルチディスプレイ説明">
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-progress" data-modal-progress>1 / 2</div>
+        <div class="modal-controls">
+          <button class="modal-nav is-secondary" type="button" data-modal-prev>前へ</button>
+          <button class="modal-nav" type="button" data-modal-next>次へ</button>
+        </div>
+      </div>
+    </div>
+  </section>
+    <script src="../js/usage-device.js"></script>
+  <script src="../js/page-transition.js"></script>
+  <script src="../js/common-navigation.js"></script>
+</body>
+</html>

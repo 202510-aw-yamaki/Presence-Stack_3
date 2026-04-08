@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3-1. 求人内容の理解を深め、訓練校での学びを話せる形に整理する | Web面接ガイド</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/section_common.css">
+  <style>
+    html.transition-resume body {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, rgba(9, 19, 34, 0.82), rgba(2, 6, 12, 0.98) 72%),
+        linear-gradient(180deg, rgba(4, 10, 18, 0.92), rgba(1, 4, 10, 0.98));
+    }
+
+    html.transition-resume .site-shell,
+    html.transition-resume .section-modal {
+      visibility: hidden;
+    }
+
+    html.transition-resume body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 119;
+      background:
+        radial-gradient(circle at center, rgba(9, 19, 34, 0.82), rgba(2, 6, 12, 0.98) 72%),
+        linear-gradient(180deg, rgba(4, 10, 18, 0.92), rgba(1, 4, 10, 0.98));
+    }
+
+    html.transition-resume body::after {
+      content: "SYSTEM TRANSFER   16%";
+      position: fixed;
+      left: 50%;
+      bottom: 11vh;
+      z-index: 120;
+      transform: translateX(-50%);
+      width: min(420px, calc(100vw - 32px));
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(6, 12, 22, 0.78);
+      border: 1px solid rgba(110, 255, 219, 0.18);
+      box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.34),
+        inset 0 0 18px rgba(255, 255, 255, 0.02);
+      color: #97ffe6;
+      font: 700 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: 0.16em;
+      text-align: left;
+      white-space: pre;
+    }
+  </style>
+  <script>
+    (function () {
+      var key = "presenceTransitionState";
+      var ttl = 15000;
+      try {
+        var raw = window.sessionStorage.getItem(key);
+        if (!raw) return;
+        var state = JSON.parse(raw);
+        var path = decodeURIComponent(window.location.pathname).replace(/\\/g, "/");
+        var marker = "/Presence-Stack_2/";
+        var markerIndex = path.lastIndexOf(marker);
+        var pageKey = markerIndex >= 0 ? path.slice(markerIndex + marker.length) : path.replace(/^\/+/, "");
+        var expired = Date.now() - Number(state.startedAt || 0) > ttl;
+        if (!expired && state.phase === "resume" && state.target === pageKey) {
+          document.documentElement.classList.add("transition-resume");
+          return;
+        }
+        window.sessionStorage.removeItem(key);
+      } catch (error) {
+        try {
+          window.sessionStorage.removeItem(key);
+        } catch (innerError) {}
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="site-shell">
+    <div class="slide-page">
+      <div data-shared-header></div>
+
+      <main class="slide-body" aria-label="3-1 求人内容の理解を深め、訓練校での学びを話せる形に整理する">
+        <section class="section-page" aria-labelledby="page-title">
+          <article class="card title-card">
+            <h1 id="page-title" class="page-title">3-1. 求人内容の理解を深め、訓練校での学びを話せる形に整理する</h1>
+          </article>
+
+          <article class="note" aria-label="注釈">
+            <div class="note-head">
+              <span class="note-badge">注釈</span>
+            </div>
+            <p class="text">企業研究・求人内容の理解は昔と違い、今はリンクに飛べば様々な情報があります。<br>その一方で情報が膨大になり自身で整理するのには時間がかかります。<br>また、訓練校というものが面接官によっては縁のない方もいます。<br>ここでは、ChatGPTを活用した情報の整理方法や<br>自身の学びの説明の仕方などの<strong>プロンプト</strong>を紹介します。</p>
+          </article>
+
+          <article class="check-card" aria-labelledby="job-research-title" role="button" tabindex="0" data-modal-target="#job-research-modal">
+            <div class="check-card-header">
+              <h2 id="job-research-title" class="check-title">企業研究/求人内容</h2>
+            </div>
+            <div class="check-body">
+              <div class="check-text" data-modal-step="0">
+                <ul class="check-list">
+                  <li>「情報源に応募先企業の求人情報リンクを載せてあります。面接の日程調整まで済んでいますが、この求人の特徴を整理してください。」</li>
+                  <li>「情報源に応募先企業から受けたアンケートの私の回答があります。このアンケートおよび企業情報からこの求人は私に何を求めているかを整理してください。」</li>
+                </ul>
+                <p class="text">上記のようなプロンプトを投げることで、求人内容の整理や自身との接点の把握、企業が何を求めているかの深掘りに役立ちます。</p>
+              </div>
+              <figure class="check-figure" data-modal-step="1">
+                <div class="media-frame">
+                  <div class="visual-card theme-blue">
+                    <span class="visual-eyebrow">Job Understanding</span>
+                    <h3 class="visual-title">求人の特徴と<br>企業の期待を整理する</h3>
+                    <div class="visual-meta">
+                      <span class="visual-chip">求人理解</span>
+                      <span class="visual-chip">企業研究</span>
+                    </div>
+                  </div>
+                </div>
+              </figure>
+            </div>
+          </article>
+
+          <article class="check-card" aria-labelledby="training-language-title" role="button" tabindex="0" data-modal-target="#training-language-modal">
+            <div class="check-card-header">
+              <h2 id="training-language-title" class="check-title">訓練校での学びの言語化</h2>
+            </div>
+            <div class="check-body">
+              <div class="check-text" data-modal-step="0">
+                <ul class="check-list">
+                  <li>「情報源に職業訓練校のカリキュラムと日々の学習メモを入れてあります。面接で『職業訓練校で何を学んでいますか』と聞かれたときに、授業名の羅列ではなく、理解や気づきも含めて自然に答えられるよう整理してください。」</li>
+                  <li>「情報源に職業訓練校のカリキュラムと日々の学習メモを入れてあります。私の習熟度から考えて、情報源の応募先の企業との面接での強み/弱みを教えてください。」</li>
+                </ul>
+                <p class="text">単なる受講履歴ではなく、<strong>学びを自分の言葉で説明する準備</strong>や、自己分析、これからの課題整理に役立ちます。ただ、生成された言葉を鵜呑みにするのではなく、自身の学習に役立てましょう。</p>
+              </div>
+              <figure class="check-figure" data-modal-step="1">
+                <div class="media-frame">
+                  <div class="visual-card theme-green">
+                    <span class="visual-eyebrow">Training Story</span>
+                    <h3 class="visual-title">学びを自分の言葉で<br>説明できる形にする</h3>
+                    <div class="visual-meta">
+                      <span class="visual-chip">学習記録</span>
+                      <span class="visual-chip">自己分析</span>
+                    </div>
+                  </div>
+                </div>
+              </figure>
+            </div>
+          </article>
+        </section>
+      </main>
+
+      <div data-shared-footer></div>
+    </div>
+  </div>
+
+  <section class="section-modal" id="job-research-modal" aria-hidden="true" aria-labelledby="job-research-modal-title">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="job-research-modal-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="job-research-modal-title">企業研究/求人内容</h2>
+        <button class="modal-close" type="button" aria-label="閉じる" data-modal-close>閉じる</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-panel is-active">
+          <div class="modal-step">
+            <div class="modal-text-panel check-text">
+              <ul class="modal-list">
+                <li>「情報源に応募先企業の求人情報リンクを載せてあります。面接の日程調整まで済んでいますが、この求人の特徴を整理してください。」</li>
+                <li>「情報源に応募先企業から受けたアンケートの私の回答があります。このアンケートおよび企業情報からこの求人は私に何を求めているかを整理してください。」</li>
+              </ul>
+              <p class="text">上記のようなプロンプトを投げることで、求人内容の整理や自身との接点の把握、企業が何を求めているかの深掘りに役立ちます。</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-panel">
+          <div class="modal-step">
+            <figure class="modal-figure modal-image-panel">
+              <div class="media-frame">
+                <div class="visual-card theme-blue">
+                  <span class="visual-eyebrow">Job Understanding</span>
+                  <h3 class="visual-title">求人の特徴と<br>企業の期待を整理する</h3>
+                  <div class="visual-meta">
+                    <span class="visual-chip">求人理解</span>
+                    <span class="visual-chip">企業研究</span>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-progress" data-modal-progress>1 / 2</div>
+        <div class="modal-controls">
+          <button class="modal-nav is-secondary" type="button" data-modal-prev>前へ</button>
+          <button class="modal-nav" type="button" data-modal-next>次へ</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-modal" id="training-language-modal" aria-hidden="true" aria-labelledby="training-language-modal-title">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="training-language-modal-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="training-language-modal-title">訓練校での学びの言語化</h2>
+        <button class="modal-close" type="button" aria-label="閉じる" data-modal-close>閉じる</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-panel is-active">
+          <div class="modal-step">
+            <div class="modal-text-panel check-text">
+              <ul class="modal-list">
+                <li>「情報源に職業訓練校のカリキュラムと日々の学習メモを入れてあります。面接で『職業訓練校で何を学んでいますか』と聞かれたときに、授業名の羅列ではなく、理解や気づきも含めて自然に答えられるよう整理してください。」</li>
+                <li>「情報源に職業訓練校のカリキュラムと日々の学習メモを入れてあります。私の習熟度から考えて、情報源の応募先の企業との面接での強み/弱みを教えてください。」</li>
+              </ul>
+              <p class="text">単なる受講履歴ではなく、<strong>学びを自分の言葉で説明する準備</strong>や、自己分析、これからの課題整理に役立ちます。ただ、生成された言葉を鵜呑みにするのではなく、自身の学習に役立てましょう。</p>
+            </div>
+          </div>
+        </div>
+        <div class="modal-panel">
+          <div class="modal-step">
+            <figure class="modal-figure modal-image-panel">
+              <div class="media-frame">
+                <div class="visual-card theme-green">
+                  <span class="visual-eyebrow">Training Story</span>
+                  <h3 class="visual-title">学びを自分の言葉で<br>説明できる形にする</h3>
+                  <div class="visual-meta">
+                    <span class="visual-chip">学習記録</span>
+                    <span class="visual-chip">自己分析</span>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-progress" data-modal-progress>1 / 2</div>
+        <div class="modal-controls">
+          <button class="modal-nav is-secondary" type="button" data-modal-prev>前へ</button>
+          <button class="modal-nav" type="button" data-modal-next>次へ</button>
+        </div>
+      </div>
+    </div>
+  </section>
+    <script src="../js/usage-device.js"></script>
+  <script src="../js/page-transition.js"></script>
+  <script src="../js/common-navigation.js"></script>
+</body>
+</html>

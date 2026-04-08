@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2-4. 職業訓練校のカリキュラムと学習記録 | Web面接ガイド</title>
+  <link rel="stylesheet" href="../css/common.css">
+  <link rel="stylesheet" href="../css/section_common.css">
+  <style>
+    html.transition-resume body {
+      overflow: hidden;
+      background:
+        radial-gradient(circle at center, rgba(9, 19, 34, 0.82), rgba(2, 6, 12, 0.98) 72%),
+        linear-gradient(180deg, rgba(4, 10, 18, 0.92), rgba(1, 4, 10, 0.98));
+    }
+
+    html.transition-resume .site-shell,
+    html.transition-resume .section-modal {
+      visibility: hidden;
+    }
+
+    html.transition-resume body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 119;
+      background:
+        radial-gradient(circle at center, rgba(9, 19, 34, 0.82), rgba(2, 6, 12, 0.98) 72%),
+        linear-gradient(180deg, rgba(4, 10, 18, 0.92), rgba(1, 4, 10, 0.98));
+    }
+
+    html.transition-resume body::after {
+      content: "SYSTEM TRANSFER   16%";
+      position: fixed;
+      left: 50%;
+      bottom: 11vh;
+      z-index: 120;
+      transform: translateX(-50%);
+      width: min(420px, calc(100vw - 32px));
+      padding: 18px 20px;
+      border-radius: 18px;
+      background: rgba(6, 12, 22, 0.78);
+      border: 1px solid rgba(110, 255, 219, 0.18);
+      box-shadow:
+        0 18px 44px rgba(0, 0, 0, 0.34),
+        inset 0 0 18px rgba(255, 255, 255, 0.02);
+      color: #97ffe6;
+      font: 700 14px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      letter-spacing: 0.16em;
+      text-align: left;
+      white-space: pre;
+    }
+  </style>
+  <script>
+    (function () {
+      var key = "presenceTransitionState";
+      var ttl = 15000;
+      try {
+        var raw = window.sessionStorage.getItem(key);
+        if (!raw) return;
+        var state = JSON.parse(raw);
+        var path = decodeURIComponent(window.location.pathname).replace(/\\/g, "/");
+        var marker = "/Presence-Stack_2/";
+        var markerIndex = path.lastIndexOf(marker);
+        var pageKey = markerIndex >= 0 ? path.slice(markerIndex + marker.length) : path.replace(/^\/+/, "");
+        var expired = Date.now() - Number(state.startedAt || 0) > ttl;
+        if (!expired && state.phase === "resume" && state.target === pageKey) {
+          document.documentElement.classList.add("transition-resume");
+          return;
+        }
+        window.sessionStorage.removeItem(key);
+      } catch (error) {
+        try {
+          window.sessionStorage.removeItem(key);
+        } catch (innerError) {}
+      }
+    })();
+  </script>
+</head>
+<body>
+  <div class="site-shell">
+    <div class="slide-page">
+      <div data-shared-header></div>
+
+      <main class="slide-body" aria-label="2-4 職業訓練校のカリキュラムと学習記録">
+        <section class="section-page" aria-labelledby="page-title">
+          <article class="card title-card">
+            <h1 id="page-title" class="page-title">2-4. 職業訓練校のカリキュラムと学習記録</h1>
+          </article>
+
+          <article class="note" aria-label="注釈">
+            <div class="note-head">
+              <span class="note-badge">注釈</span>
+            </div>
+            <p class="text">
+              訓練校のカリキュラム表もプロジェクトの情報源として共有しておくことは有用です。簡易なカレンダー形式でも、現在どの分野を学習しているかをChatGPTと共有しやすくなります。
+            </p>
+          </article>
+
+          <article class="check-card" aria-labelledby="curriculum-share-title" role="button" tabindex="0" data-modal-target="#curriculum-share-modal">
+            <div class="check-card-header">
+              <h2 id="curriculum-share-title" class="check-title">共有しておきたい情報</h2>
+            </div>
+            <div class="check-body">
+              <div class="check-text" data-modal-step="0">
+                <ul class="check-list">
+                  <li>訓練名・コース名</li>
+                  <li>受講期間</li>
+                  <li>カリキュラム表</li>
+                  <li>学習中の分野や授業の流れ</li>
+                </ul>
+              </div>
+              <figure class="check-figure" data-modal-step="1">
+                <div class="media-frame">
+                  <div class="visual-card theme-slate">
+                    <span class="visual-eyebrow">Curriculum</span>
+                    <h3 class="visual-title">受講中の内容を<br>ChatGPTに共有する</h3>
+                    <div class="visual-meta">
+                      <span class="visual-chip">訓練名</span>
+                      <span class="visual-chip">受講期間</span>
+                    </div>
+                  </div>
+                </div>
+              </figure>
+            </div>
+          </article>
+
+          <article class="check-card" aria-labelledby="curriculum-meaning-title" role="button" tabindex="0" data-modal-target="#curriculum-meaning-modal">
+            <div class="check-card-header">
+              <h2 id="curriculum-meaning-title" class="check-title">共有する意義</h2>
+            </div>
+            <div class="check-body">
+              <div class="check-text" data-modal-step="0">
+                <ul class="check-list">
+                  <li>面接では「職業訓練校でどのようなことを学んでいますか」と聞かれることがあります。</li>
+                  <li>カリキュラム名の列挙ではなく、何を理解し、どのような気づきがあったかまで話せると印象が変わります。</li>
+                  <li>日々の学習メモもあわせて共有しておくのがおすすめです。</li>
+                </ul>
+              </div>
+              <figure class="check-figure" data-modal-step="1">
+                <div class="media-frame">
+                  <div class="visual-card theme-green">
+                    <span class="visual-eyebrow">Meaning</span>
+                    <h3 class="visual-title">学んだ内容と<br>気づきを話せる状態へ</h3>
+                    <div class="visual-meta">
+                      <span class="visual-chip">理解</span>
+                      <span class="visual-chip">気づき</span>
+                    </div>
+                  </div>
+                </div>
+              </figure>
+            </div>
+          </article>
+
+          <article class="check-card" aria-labelledby="curriculum-log-title" role="button" tabindex="0" data-modal-target="#curriculum-log-modal">
+            <div class="check-card-header">
+              <h2 id="curriculum-log-title" class="check-title">おすすめの記録方法</h2>
+            </div>
+            <div class="check-body">
+              <div class="check-text" data-modal-step="0">
+                <ul class="check-list">
+                  <li>その日に受けた授業の簡易メモを残します。</li>
+                  <li>週末時点で、その週のまとめを作ります。</li>
+                  <li>例: 「AI活用演習：質問の仕方によって回答の質が変わることを実感」</li>
+                  <li>例: 「UI/UX概論：見た目だけでなく使いやすさの設計が重要だと学んだ」</li>
+                  <li>週次まとめ例: 「AI活用とUI/UXの基礎を学び、ユーザーの視点や、考えたことを言語化する大切さを意識できるようになった」</li>
+                </ul>
+              </div>
+              <figure class="check-figure" data-modal-step="1">
+                <div class="media-frame">
+                  <div class="visual-card theme-purple">
+                    <span class="visual-eyebrow">Learning Log</span>
+                    <h3 class="visual-title">日次メモと週次まとめを<br>セットで残す</h3>
+                    <div class="visual-meta">
+                      <span class="visual-chip">日次</span>
+                      <span class="visual-chip">週次</span>
+                    </div>
+                  </div>
+                </div>
+              </figure>
+            </div>
+          </article>
+
+          <article class="note" aria-label="この運用の利点">
+            <div class="note-head">
+              <span class="note-badge">注釈</span>
+            </div>
+            <p class="text">
+              この運用により、ChatGPTが現在どの分野を学習中か、どこまで理解が進んでいるか、どの分野に手応えや課題を感じているかを把握しやすくなります。結果として、想定問答集の作成、自己PRの整理、学習内容の言語化がより実態に即したものになりやすくなります。
+            </p>
+          </article>
+        </section>
+      </main>
+
+      <div data-shared-footer></div>
+    </div>
+  </div>
+
+  <section class="section-modal" id="curriculum-share-modal" aria-hidden="true" aria-labelledby="curriculum-share-modal-title">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="curriculum-share-modal-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="curriculum-share-modal-title">共有しておきたい情報</h2>
+        <button class="modal-close" type="button" aria-label="閉じる" data-modal-close>閉じる</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-panel is-active">
+          <div class="modal-step">
+            <div class="modal-text-panel check-text">
+              <ul class="modal-list">
+                <li>訓練名・コース名</li>
+                <li>受講期間</li>
+                <li>カリキュラム表</li>
+                <li>学習中の分野や授業の流れ</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-panel">
+          <div class="modal-step">
+            <figure class="modal-figure modal-image-panel">
+              <div class="media-frame">
+                <div class="visual-card theme-slate">
+                  <span class="visual-eyebrow">Curriculum</span>
+                  <h3 class="visual-title">受講中の内容を<br>ChatGPTに共有する</h3>
+                  <div class="visual-meta">
+                    <span class="visual-chip">訓練名</span>
+                    <span class="visual-chip">受講期間</span>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-progress" data-modal-progress>1 / 2</div>
+        <div class="modal-controls">
+          <button class="modal-nav is-secondary" type="button" data-modal-prev>前へ</button>
+          <button class="modal-nav" type="button" data-modal-next>次へ</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-modal" id="curriculum-meaning-modal" aria-hidden="true" aria-labelledby="curriculum-meaning-modal-title">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="curriculum-meaning-modal-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="curriculum-meaning-modal-title">共有する意義</h2>
+        <button class="modal-close" type="button" aria-label="閉じる" data-modal-close>閉じる</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-panel is-active">
+          <div class="modal-step">
+            <div class="modal-text-panel check-text">
+              <ul class="modal-list">
+                <li>面接では「職業訓練校でどのようなことを学んでいますか」と聞かれることがあります。</li>
+                <li>カリキュラム名の列挙ではなく、何を理解し、どのような気づきがあったかまで話せると印象が変わります。</li>
+                <li>日々の学習メモもあわせて共有しておくのがおすすめです。</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-panel">
+          <div class="modal-step">
+            <figure class="modal-figure modal-image-panel">
+              <div class="media-frame">
+                <div class="visual-card theme-green">
+                  <span class="visual-eyebrow">Meaning</span>
+                  <h3 class="visual-title">学んだ内容と<br>気づきを話せる状態へ</h3>
+                  <div class="visual-meta">
+                    <span class="visual-chip">理解</span>
+                    <span class="visual-chip">気づき</span>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-progress" data-modal-progress>1 / 2</div>
+        <div class="modal-controls">
+          <button class="modal-nav is-secondary" type="button" data-modal-prev>前へ</button>
+          <button class="modal-nav" type="button" data-modal-next>次へ</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-modal" id="curriculum-log-modal" aria-hidden="true" aria-labelledby="curriculum-log-modal-title">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="curriculum-log-modal-title">
+      <div class="modal-header">
+        <h2 class="modal-title" id="curriculum-log-modal-title">おすすめの記録方法</h2>
+        <button class="modal-close" type="button" aria-label="閉じる" data-modal-close>閉じる</button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-panel is-active">
+          <div class="modal-step">
+            <div class="modal-text-panel check-text">
+              <ul class="modal-list">
+                <li>その日に受けた授業の簡易メモを残します。</li>
+                <li>週末時点で、その週のまとめを作ります。</li>
+                <li>例: 「AI活用演習：質問の仕方によって回答の質が変わることを実感」</li>
+                <li>例: 「UI/UX概論：見た目だけでなく使いやすさの設計が重要だと学んだ」</li>
+                <li>週次まとめ例: 「AI活用とUI/UXの基礎を学び、ユーザーの視点や、考えたことを言語化する大切さを意識できるようになった」</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="modal-panel">
+          <div class="modal-step">
+            <figure class="modal-figure modal-image-panel">
+              <div class="media-frame">
+                <div class="visual-card theme-purple">
+                  <span class="visual-eyebrow">Learning Log</span>
+                  <h3 class="visual-title">日次メモと週次まとめを<br>セットで残す</h3>
+                  <div class="visual-meta">
+                    <span class="visual-chip">日次</span>
+                    <span class="visual-chip">週次</span>
+                  </div>
+                </div>
+              </div>
+            </figure>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <div class="modal-progress" data-modal-progress>1 / 2</div>
+        <div class="modal-controls">
+          <button class="modal-nav is-secondary" type="button" data-modal-prev>前へ</button>
+          <button class="modal-nav" type="button" data-modal-next>次へ</button>
+        </div>
+      </div>
+    </div>
+  </section>
+    <script src="../js/usage-device.js"></script>
+  <script src="../js/page-transition.js"></script>
+  <script src="../js/common-navigation.js"></script>
+</body>
+</html>
